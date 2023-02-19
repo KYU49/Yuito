@@ -20,7 +20,7 @@ class QuickTootViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences,
 ) : ViewModel() {
 
-    private val account = accountManager.activeAccount!!
+    val account = accountManager.activeAccount!!
 
     private val unleakableAllowed by lazy { CAN_USE_UNLEAKABLE.contains(account.domain) }
 

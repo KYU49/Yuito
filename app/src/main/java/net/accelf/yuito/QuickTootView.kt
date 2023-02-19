@@ -103,7 +103,7 @@ class QuickTootView @JvmOverloads constructor(
 
     private fun syncDefaultTag() {
         viewModel.defaultTag.value = if (preference.getBoolean(PREF_USE_DEFAULT_TAG, false)) {
-            preference.getString(PREF_DEFAULT_TAG, null)
+            preference.getString("${PREF_DEFAULT_TAG}_${viewModel.account.domain}", null)
         } else {
             null
         }

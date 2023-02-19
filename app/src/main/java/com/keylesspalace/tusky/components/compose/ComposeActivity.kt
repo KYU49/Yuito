@@ -538,10 +538,10 @@ class ComposeActivity :
             eventHub.dispatch(PreferenceChangedEvent(PREF_USE_DEFAULT_TAG))
         }
 
-        binding.editTextDefaultText.setText(preferences.getString(PREF_DEFAULT_TAG, ""))
+        binding.editTextDefaultText.setText(preferences.getString("${PREF_DEFAULT_TAG}_${accountManager.activeAccount?.domain?:""}", ""))
         binding.editTextDefaultText.doAfterTextChanged {
             preferences.edit()
-                .putString(PREF_DEFAULT_TAG, it.toString())
+                .putString("${PREF_DEFAULT_TAG}_${accountManager.activeAccount?.domain?:""}", it.toString())
                 .apply()
             eventHub.dispatch(PreferenceChangedEvent(PREF_DEFAULT_TAG))
         }
